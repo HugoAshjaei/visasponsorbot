@@ -44,8 +44,8 @@ const stackoverflowJobs = async () => {
                 };
             }
         }));
-        console.log(await jobs);
-        return [... await jobs];
+        
+        return (await jobs).filter(item => item);
     } catch (err) {
         console.log(err)
     }
