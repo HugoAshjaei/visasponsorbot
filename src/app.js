@@ -6,7 +6,9 @@ const {
     GetAll
 } = require('./AIO')
 
+let count = 0;
 cron.schedule('0 */6 * * *', () => {
+    console.log('cron job count: ', count++);
     GetAll().then(async (result) => {
         if (result.length != 0) {
             await SendJobs(result)
