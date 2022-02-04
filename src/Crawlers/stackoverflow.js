@@ -26,7 +26,7 @@ const stackoverflowJobs = async () => {
                 if (content.length > 500) {
                     content = item.content.replace(/<[^>]+>/g, '').split('. ').slice(0, 2).join('. ') + '...';
                     if (content.length > 500) {
-                        content = item.content.replace(/<[^>]+>/g, '').split('. ').slice(0, 1).join('. ') + '...';
+                        content = item.content.replace(/<[^>]+>/g, '').split('. ').slice(0, 1).join('. ').slice(0, 500) + '...';
                     }
                 }
                 content = he.decode(content);
