@@ -53,10 +53,6 @@ const relocateDotMeJobs = async () => {
     }
 }
 
-relocateDotMeJobs().then(data => {
-    console.log(data);
-});
-
 module.exports = {
     relocateDotMeJobs
 }
