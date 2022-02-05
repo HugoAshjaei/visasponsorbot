@@ -9,11 +9,14 @@ mongoose.connect(process.env.MONGO_URL, {
 const {
     stackoverflowJobs
 } = require('./Crawlers/stackoverflow')
+const {
+    relocateDotMeJobs
+} = require('./Crawlers/relocatedotme')
 module.exports.GetAll = async () => {
     try {
         let Result = []
         // Result.push()
-        Result.push(...(await stackoverflowJobs()))
+        Result.push(...(await stackoverflowJobs()), ...(await relocateDotMeJobs()))
         // console.log(await stackoverflowJobs());
         return Result
     } catch (error) {

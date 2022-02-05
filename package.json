@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.25.0",
+    "cheerio": "^1.0.0-rc.10",
     "dotenv": "^8.2.0",
     "he": "^1.2.0",
     "https-proxy-agent": "^5.0.0",
