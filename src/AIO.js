@@ -12,11 +12,14 @@ const {
 const {
     relocateDotMeJobs
 } = require('./Crawlers/relocatedotme')
+const {
+    vanhackJobs
+} = require('./Crawlers/vanhack')
 module.exports.GetAll = async () => {
     try {
         let Result = []
         // Result.push()
-        Result.push(...(await stackoverflowJobs()), ...(await relocateDotMeJobs()))
+        Result.push(...(await stackoverflowJobs()), ...(await relocateDotMeJobs()) , ...(await vanhackJobs()))
         // console.log(await stackoverflowJobs());
         return Result
     } catch (error) {
