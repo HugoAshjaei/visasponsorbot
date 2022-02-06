@@ -8,18 +8,23 @@ mongoose.connect(process.env.MONGO_URL, {
 
 const {
     stackoverflowJobs
-} = require('./Crawlers/stackoverflow')
+} = require('./Crawlers/stackoverflow');
 const {
     relocateDotMeJobs
-} = require('./Crawlers/relocatedotme')
+} = require('./Crawlers/relocatedotme');
 const {
     vanhackJobs
-} = require('./Crawlers/vanhack')
+} = require('./Crawlers/vanhack');
+const {
+    reeddotcodotukJobs
+} = require('./Crawlers/reeddotcodotuk');
+
+
 module.exports.GetAll = async () => {
     try {
         let Result = []
         // Result.push()
-        Result.push(...(await stackoverflowJobs()), ...(await relocateDotMeJobs()) , ...(await vanhackJobs()))
+        Result.push(...(await stackoverflowJobs()), ...(await relocateDotMeJobs()) , ...(await vanhackJobs()) , ...(await reeddotcodotukJobs()));
         // console.log(await stackoverflowJobs());
         return Result
     } catch (error) {
