@@ -12,7 +12,7 @@ const vanhackJobs = async () => {
                 where: "vanhack",
                 guid: item.id
             });
-            if (!false) {
+            if (!exist) {
                 await new Last({
                     where: "vanhack",
                     guid: item.id,
