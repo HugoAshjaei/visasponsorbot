@@ -5,6 +5,7 @@ const _ = require('lodash');
 const he = require('he');
 let Parser = require('rss-parser');
 let parser = new Parser();
+const updateCompany = require('../utils/updateCompany');
 
 
 const relocateDotMeJobs = async () => {
@@ -33,6 +34,7 @@ const relocateDotMeJobs = async () => {
                     where: "relocate.me",
                     guid: url,
                 }).save();
+                updateCompany({ title, company, location, content, url, hashtags });
                 return {
                     title,
                     company,

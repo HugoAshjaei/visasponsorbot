@@ -2,6 +2,7 @@ const Last = require('../models/Last');
 const moment = require('moment');
 const he = require('he');
 const axios = require('axios');
+const updateCompany = require('../utils/updateCompany');
 
 
 const vanhackJobs = async () => {
@@ -45,7 +46,7 @@ const vanhackJobs = async () => {
                     content = he.decode(content);
                     const url = 'https://vanhack.com/job/' + item.id;
                     const hashtags = item.skills.map(item => item.name);
-
+                    updateCompany({ title, company, location, content, url, hashtags });
                     return {
                         title,
                         company,
