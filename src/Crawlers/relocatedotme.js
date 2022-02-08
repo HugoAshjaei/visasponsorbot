@@ -42,7 +42,7 @@ const relocateDotMeJobs = async () => {
                     content,
                     url,
                     hashtags,
-                    source: 'Relocate .me',
+                    source: 'Relocate.me',
                 };
             } else {
                 return null;
