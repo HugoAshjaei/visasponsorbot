@@ -18,13 +18,16 @@ const {
 const {
     reeddotcodotukJobs
 } = require('./Crawlers/reeddotcodotuk');
+const {
+    landingJobs
+} = require('./Crawlers/landingdotjobs');
 
 
 module.exports.GetAll = async () => {
     try {
         let Result = []
         // Result.push()
-        Result.push(...(await stackoverflowJobs()), ...(await relocateDotMeJobs()) , ...(await vanhackJobs()) , ...(await reeddotcodotukJobs()));
+        Result.push(...(await stackoverflowJobs()), ...(await relocateDotMeJobs()) , ...(await vanhackJobs()) , ...(await reeddotcodotukJobs()) , ...(await landingJobs()));
         // console.log(await stackoverflowJobs());
         return Result
     } catch (error) {
