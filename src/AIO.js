@@ -21,6 +21,15 @@ const {
 const {
     landingJobs
 } = require('./Crawlers/landingdotjobs');
+const {
+    relocateMeDotEuJobs
+} = require('./Crawlers/relocatemedoteu');
+const {
+    simplyhiredJobs
+} = require('./Crawlers/simplyhired');
+const {
+    swissDevJobs
+} = require('./Crawlers/swissdevjobsdotch');
 
 
 module.exports.GetAll = async () => {
@@ -32,6 +41,9 @@ module.exports.GetAll = async () => {
             ...(await relocateDotMeJobs()),
             ...(await vanhackJobs()),
             ...(await reeddotcodotukJobs()),
+            ...(await relocateMeDotEuJobs()),
+            ...(await simplyhiredJobs()),
+            ...(await swissDevJobs()),
             ...(await landingJobs()));
 
         return Result

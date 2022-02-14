@@ -23,15 +23,15 @@ const simplyhiredJobs = async () => {
             }
             let options = '';
             if ($(el).find('.jobposting-salary').text().trim()) {
-                options = $(el).find('.jobposting-salary').text().trim().replace(' - ', ' up to ').replace('Estimated:','').replace(' a ', ' per ').replace(' an ', ' per ').trim();
+                options = $(el).find('.jobposting-salary').text().trim().replace(' - ', ' up to ').replace('Estimated:', '').replace(' a ', ' per ').replace(' an ', ' per ').trim();
             }
 
             const hashtags = title.toLowerCase()
                 .replace('full stack', 'fullstack')
                 .replace('big data', 'big-data')
-                .replace('software','')
-                .replace('engineer','')
-                .replace('developer','')
+                .replace('software', '')
+                .replace('engineer', '')
+                .replace('developer', '')
                 .replace('.net', 'dotnet')
                 .replace(/[^\w\s]/gi, '')
                 .replace(' and ', ' ')
@@ -45,16 +45,23 @@ const simplyhiredJobs = async () => {
                 .replace('/', '')
                 .split(' ')
                 .filter(item => item.length > 2).map(item => item.replace(/[^\w\s]/gi, ''));
-            // const exist = await Last.findOne({
-            //     where: "simplyhired",
-            //     guid: url
-            // });
-            // if (!exist) {
-            //     await new Last({
-            //         where: "simplyhired",
-            //         guid: url,
-            //     }).save();
-            //     updateCompany({ title, company, location, content, url, hashtags });
+            const exist = await Last.findOne({
+                where: "simplyhired",
+                guid: url
+            });
+            if (!exist) {
+                await new Last({
+                    where: "simplyhired",
+                    guid: url,
+                }).save();
+                updateCompany({
+                    title,
+                    company,
+                    location,
+                    content,
+                    url,
+                    hashtags
+                });
                 return {
                     title,
                     company,
@@ -65,9 +72,9 @@ const simplyhiredJobs = async () => {
                     options,
                     source: 'Simplyhired',
                 };
-            // } else {
-            //     return null;
-            // }
+            } else {
+                return null;
+            }
         }));
 
         return (await jobs).filter(item => item);
