@@ -12,7 +12,7 @@ module.exports = async (job) => {
             await new Company({
                 name: job.company,
                 locations: [job.location],
-                hashtags: [job.hashtags.sort()],
+                hashtags: job.hashtags.sort(),
                 isUpdated: true,
                 messageId: null,
             }).save();

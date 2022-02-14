@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then(() => console.log('connected to DB'))
     .catch((err) => console.log(err));
 
@@ -26,9 +26,14 @@ const {
 module.exports.GetAll = async () => {
     try {
         let Result = []
-        // Result.push()
-        Result.push(...(await stackoverflowJobs()), ...(await relocateDotMeJobs()) , ...(await vanhackJobs()) , ...(await reeddotcodotukJobs()) , ...(await landingJobs()));
-        // console.log(await stackoverflowJobs());
+
+        Result.push(
+            ...(await stackoverflowJobs()),
+            ...(await relocateDotMeJobs()),
+            ...(await vanhackJobs()),
+            ...(await reeddotcodotukJobs()),
+            ...(await landingJobs()));
+
         return Result
     } catch (error) {
         console.log(error);

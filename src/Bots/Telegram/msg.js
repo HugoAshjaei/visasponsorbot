@@ -1,4 +1,4 @@
-module.exports.creator = (Message) => {
+module.exports.creator = (Message, Index) => {
     const {
         title,
         company,
@@ -10,20 +10,27 @@ module.exports.creator = (Message) => {
         options
     } = Message
     const message = `
-<b>${title}</b>
+${Index + 1}. <a href="${url}"><b>${title}</b></a>
 Company:  <i>${company}</i>
 Location : ${location}
+Source: ${source}
 ${options ? `Options: ${options}` : ''}
-
 ${content}
-<a href="${url}">Read more and apply at ${source}</a>
-
  ${hashtags.map(tag => {
-     tag = tag.replace(/\s+/g, '_').replace(/\./g, '').replace(/\//g, '_').replace(/\(/g, '').replace(/\)/g, '').replace(/\:/g, '').replace(/\,/g, '').replace(/\;/g, '').replace(/\-/g, '_').replace(/\#/g, 'sharp').replace(/\&/g, 'and').replace(/\+/g, 'plus')
-     return `#${tag}`
+        tag = tag.replace(/\s+/g, '_')
+            .replace(/\./g, '')
+            .replace(/\//g, '_')
+            .replace(/\(/g, '')
+            .replace(/\)/g, '')
+            .replace(/\:/g, '')
+            .replace(/\,/g, '')
+            .replace(/\;/g, '')
+            .replace(/\-/g, '_')
+            .replace(/\#/g, 'sharp')
+            .replace(/\&/g, 'and')
+            .replace(/\+/g, 'plus')
+        return `#${tag}`
     }).join(' ')}
-
- <a href="https://t.me/visasponsor">@VisaSponsor</a>
  `
     return message.toString()
 }
