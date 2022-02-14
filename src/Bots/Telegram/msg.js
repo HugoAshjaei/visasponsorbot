@@ -10,13 +10,13 @@ module.exports.creator = (Message, Index) => {
         options
     } = Message
     const message = `
-${Index + 1}. <a href="${url}"><b>${title}</b></a>
+<a href="${url}"><b>${title}</b></a>
 Company:  <i>${company}</i>
 Location : ${location}
 Source: ${source}
 ${options ? `Options: ${options}` : ''}
 ${content}
- ${hashtags.map(tag => {
+${hashtags.map(tag => {
         tag = tag.replace(/\s+/g, '_')
             .replace(/\./g, '')
             .replace(/\//g, '_')
