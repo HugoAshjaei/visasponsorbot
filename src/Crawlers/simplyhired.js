@@ -83,10 +83,6 @@ const simplyhiredJobs = async () => {
     }
 }
 
-simplyhiredJobs().then(res => {
-    console.log(res);
-})
-
 module.exports = {
     simplyhiredJobs
 }
