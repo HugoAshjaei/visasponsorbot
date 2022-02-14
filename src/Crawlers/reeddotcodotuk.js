@@ -70,6 +70,7 @@ const reeddotcodotukJobs = async () => {
                     content,
                     url,
                     hashtags,
+                    options,
                     source: 'reed',
                 };
             } else {
