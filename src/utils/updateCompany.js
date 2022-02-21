@@ -20,7 +20,9 @@ module.exports = async (job) => {
         }
         exist.locations.push(job.location);
         exist.locations = _.uniq(exist.locations);
-        exist.hashtags.push(job.hashtags);
+        job.hashtags.forEach(item => {
+            exist.hashtags.push(item);
+        });
         exist.hashtags = (_.uniq(exist.hashtags)).sort();
         exist.isUpdated = true;
         await exist.save();
