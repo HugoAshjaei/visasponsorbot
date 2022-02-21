@@ -1,12 +1,18 @@
 const cron = require('node-cron');
 const {
     SendJobs
-} = require('./Bots/Telegram/DoStuff')
+} = require('./Bots/Telegram/DoStuff');
 const {
     GetAll
-} = require('./AIO')
+} = require('./AIO');
+const dotenv = require('dotenv');
+dotenv.config();
 
 
+if (process.env.UPDATE_DB === 'true') {
+    console.log('Update DB');
+    GetAll();
+}
 
 let count = 0;
 cron.schedule('0 */6 * * *', () => {
