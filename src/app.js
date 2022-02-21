@@ -11,7 +11,9 @@ dotenv.config();
 
 if (process.env.UPDATE_DB === 'true') {
     console.log('Update DB');
-    GetAll();
+    GetAll().then(data => {
+        console.log('Update DB done');
+    });
 }
 
 let count = 0;
