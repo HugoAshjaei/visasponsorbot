@@ -8,7 +8,7 @@ const updateCompany = require('../utils/updateCompany');
 const vanhackJobs = async () => {
     try {
         let result = (await axios.get('https://vanhack.com/access/v2/job?SkipCount=0&ShowVhJobs=false&query=visa%20sponsorship&&&recommended=false')).data;
-        const jobs = Promise.all(result.result.items.map(async (item) => {
+        const jobs = Promise.all(result.result.newest.items.map(async (item) => {
             const exist = await Last.findOne({
                 where: "vanhack",
                 guid: item.id
