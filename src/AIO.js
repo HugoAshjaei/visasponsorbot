@@ -7,9 +7,6 @@ mongoose.connect(process.env.MONGO_URL, {
     .catch((err) => console.log(err));
 
 const {
-    stackoverflowJobs
-} = require('./Crawlers/stackoverflow');
-const {
     relocateDotMeJobs
 } = require('./Crawlers/relocatedotme');
 const {
@@ -37,7 +34,6 @@ module.exports.GetAll = async () => {
         let Result = []
 
         Result.push(
-            ...(await stackoverflowJobs()),
             ...(await relocateDotMeJobs()),
             ...(await vanhackJobs()),
             ...(await reeddotcodotukJobs()),
