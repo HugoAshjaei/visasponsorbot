@@ -84,10 +84,6 @@ const reeddotcodotukJobs = async () => {
     }
 }
 
-reeddotcodotukJobs().then(res => {
-    console.log(res);
-});
-
 module.exports = {
     reeddotcodotukJobs
 }
